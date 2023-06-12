@@ -218,7 +218,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vector)
 
 @app.get('/recomendacion/{titulo}')
-def recomendacion(titulo:str):
+def Recomendacion(titulo:str):
     
     movie_index = movies_p[movies_p['title']  == titulo].index[0]
     distances = similarity[movie_index]
@@ -232,3 +232,4 @@ def recomendacion(titulo:str):
     print('La lista recomendada es: ')
     return listM
     
+
