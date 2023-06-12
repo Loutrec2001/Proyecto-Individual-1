@@ -1,0 +1,10 @@
+pandas
+fastapi
+numpy
+warnings
+datetime
+ast
+nltk
+seaborn
+scikit-learn
+uvicorn
