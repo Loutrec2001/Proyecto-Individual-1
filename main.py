@@ -5,7 +5,7 @@ import ast
 
 app = FastAPI()
 
-movies = pd.read_csv('/Users/edwardguzman/Documents/Documentos/Primer-Laboratorio/movies_f.csv')
+movies = pd.read_csv('movies_f.csv')
 
 
 ## FUNCIÓN CANTIDAD DE PELÍCULAS POR MES
