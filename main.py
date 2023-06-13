@@ -125,7 +125,7 @@ def get_director(nombre_director1):
         return f"No se encontraron registros para el director {nombre_director}."
 
 
-movies_p = pd.read_csv('movies_p.csv')
+movies_new = pd.read_csv('movies_new.csv')
 
 # OPERACIONES DE VECTORIZACIÓN
 # from sklearn.feature_extraction.text import CountVectorizer
@@ -154,12 +154,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 @app.get('/recomendacion/{titulo}')
 def recomendacion2(titulo):
     vectorizer = TfidfVectorizer(ngram_range=(1,2))
-    tfid = vectorizer.fit_transform(movies_p['tags'])
+    tfid = vectorizer.fit_transform(movies_new['tags'])
     query = vectorizer.transform([titulo])
     similar = cosine_similarity(query,tfid).flatten()
 
     ind_simi = np.argpartition(similar, -50)[-50:]
-    simil = movies_p.iloc[ind_simi]
+    simil = movies_new.iloc[ind_simi]
 
     sort_simil = simil.sort_values(by ='popularity', ascending = False)
 
