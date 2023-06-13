@@ -5,3 +5,4 @@ datetime
 nltk
 scikit-learn
 uvicorn
+scikit

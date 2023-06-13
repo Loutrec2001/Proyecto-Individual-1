@@ -129,7 +129,7 @@ movies_p = pd.read_csv('movies_p.csv')
 
 # OPERACIONES DE VECTORIZACIÓN
 from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer(max_features= 9000, stop_words='english')
+cv = CountVectorizer(max_features= 5000, stop_words='english')
 vector = cv.fit_transform(movies_p['tags']).toarray()
 cv.get_feature_names_out()
 from sklearn.metrics.pairwise import cosine_similarity
