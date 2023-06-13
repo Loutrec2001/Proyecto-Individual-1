@@ -152,7 +152,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 @app.get('/recomendacion/{titulo}')
-def recomendacion2(titulo):
+def recomendacion(titulo):
     vectorizer = TfidfVectorizer(ngram_range=(1,2))
     tfid = vectorizer.fit_transform(movies_p['tags'])
     query = vectorizer.transform([titulo])
