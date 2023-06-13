@@ -85,3 +85,7 @@ https://youtu.be/Kr3YfWPvNpI
 ## Link GitHub
 
 https://github.com/Loutrec2001/Proyecto-Individual-1.git
+
+## Link video donde se muestra la funcionalidad completa del Deploy en Render
+
+https://youtu.be/LpVGPUOlO4Q
