@@ -132,24 +132,41 @@ movies_p = pd.read_csv('movies_p.csv')
 # cv = CountVectorizer(max_features= 5000, stop_words='english')
 # vector = cv.fit_transform(movies_p['tags']).toarray()
 # cv.get_feature_names_out()
-# from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics.pairwise import cosine_similarity
 # similarity = cosine_similarity(vector)
 
-from Similarity import cosine_similarity_fuction
-similarity = cosine_similarity_fuction()
+
+# @app.get('/recomendacion/{titulo}')
+# def movie_recommend(titulo):
+#     movie_index = movies_p[movies_p['title']  == titulo].index[0]
+#     distances = similarity[movie_index]
+#     movie_list = sorted(list(enumerate(distances)),reverse = True, key = lambda x:x[1])[1:6]
+#     list_p = []
+#     for i in movie_list:
+        
+#         j = movies_p.iloc[i[0]].title
+#         list_p.append(j)
+#     return {'lista recomendada': list_p}
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 
 @app.get('/recomendacion/{titulo}')
-def movie_recommend(titulo):
-    movie_index = movies_p[movies_p['title']  == titulo].index[0]
-    distances = similarity[movie_index]
-    movie_list = sorted(list(enumerate(distances)),reverse = True, key = lambda x:x[1])[1:6]
-    list_p = []
-    for i in movie_list:
-        
-        j = movies_p.iloc[i[0]].title
-        list_p.append(j)
-    return {'lista recomendada': list_p}
-   
+def recomendacion2(titulo):
+    vectorizer = TfidfVectorizer(ngram_range=(1,2))
+    tfid = vectorizer.fit_transform(movies_p['tags'])
+    query = vectorizer.transform([titulo])
+    similar = cosine_similarity(query,tfid).flatten()
+
+    ind_simi = np.argpartition(similar, -50)[-50:]
+    simil = movies_p.iloc[ind_simi]
+
+    sort_simil = simil.sort_values(by ='popularity', ascending = False)
+
+    popular_simil = sort_simil.head(5)
+    resultado_1 = popular_simil['title'].astype(str) 
+
+    return resultado_1
 
 
 
