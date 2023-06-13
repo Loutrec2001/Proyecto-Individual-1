@@ -123,3 +123,32 @@ def get_director(nombre_director1):
         return films
     else:
         return f"No se encontraron registros para el director {nombre_director}."
+
+
+movies_p = pd.read_csv('movies_p.csv')
+
+# OPERACIONES DE VECTORIZACIÓN
+from sklearn.feature_extraction.text import CountVectorizer
+cv = CountVectorizer(max_features= 9000, stop_words='english')
+vector = cv.fit_transform(movies_p['tags']).toarray()
+cv.get_feature_names_out()
+from sklearn.metrics.pairwise import cosine_similarity
+similarity = cosine_similarity(vector)
+
+@app.get('/recomendacion/{titulo}')
+def movie_recommend(titulo):
+    movie_index = movies_p[movies_p['title']  == titulo].index[0]
+    distances = similarity[movie_index]
+    movie_list = sorted(list(enumerate(distances)),reverse = True, key = lambda x:x[1])[1:6]
+    list_p = []
+    for i in movie_list:
+        
+        j = movies_p.iloc[i[0]].title
+        list_p.append(j)
+    return {'lista recomendada': list_p}
+   
+
+
+
+    
+    
