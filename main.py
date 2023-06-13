@@ -128,12 +128,15 @@ def get_director(nombre_director1):
 movies_p = pd.read_csv('movies_p.csv')
 
 # OPERACIONES DE VECTORIZACIÓN
-from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer(max_features= 5000, stop_words='english')
-vector = cv.fit_transform(movies_p['tags']).toarray()
-cv.get_feature_names_out()
-from sklearn.metrics.pairwise import cosine_similarity
-similarity = cosine_similarity(vector)
+# from sklearn.feature_extraction.text import CountVectorizer
+# cv = CountVectorizer(max_features= 5000, stop_words='english')
+# vector = cv.fit_transform(movies_p['tags']).toarray()
+# cv.get_feature_names_out()
+# from sklearn.metrics.pairwise import cosine_similarity
+# similarity = cosine_similarity(vector)
+
+from Similarity import cosine_similarity_fuction
+similarity = cosine_similarity_fuction()
 
 @app.get('/recomendacion/{titulo}')
 def movie_recommend(titulo):
