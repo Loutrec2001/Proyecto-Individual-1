@@ -71,3 +71,13 @@ Por último realizamos dos funciones de recomendación:
 Por último, utilizamos FastApi: /Users/edwardguzman/Documents/Documentos/Primer-Laboratorio/Screen Shot 2023-06-12 at 3.49.46 AM.png
 
 Nota: No se coloca la segunda función es FastApi para no generar confusión en las funciones programadas.
+
+## Fast Api y Deploy en Render
+
+Ya que se tiene todas las funciones probadas se realiza la ejecución en FastApi. Se realiza el Deploy en Render, el web service centa con la dirección:
+
+https://prueba-i4mb.onrender.com/docs
+
+## Link del video  
+
+https://youtu.be/Kr3YfWPvNpI
