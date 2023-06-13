@@ -10,7 +10,7 @@ movies = pd.read_csv('movies_f.csv')
 
 ## FUNCIÓN CANTIDAD DE PELÍCULAS POR MES
 movies['release_date'] = pd.to_datetime(movies['release_date'])
-@app.get("/Cantidad_filmaciones_mes/{Mes}")
+@app.get("/cantidad_filmaciones_mes/{Mes}")
 def cnt_of_films_month(Mes):
     
     months = ["enero", "febrero", "marzo", "abril", "mayo"
@@ -32,7 +32,7 @@ def cnt_of_films_month(Mes):
 
 
 ## FUNCIÓN CANTIDAD DE PELÍCULAS POR DIA
-@app.get("/Cantidad_filmaciones_dia/{Dia}")
+@app.get("/cantidad_filmaciones_dia/{Dia}")
 def cnt_of_films_day(Dia):
 
     days = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes','sabado','domingo']
